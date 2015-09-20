@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        var mainApp = angular.module("includeApp", []);
+        mainApp.controller("includeController", function ($scope) {
+            $scope.students = [{
+                firstName: "Piyush",
+                lastName: "Kumar",
+                subject: [{
+                    sub_name: "Maths",
+                    marks: "100"
+                },
+                    {
+                        sub_name: "Science",
+                        marks: "90"
+                    }]
+            },
+                {
+                    firstName: "Sheel",
+                    lastName: "Kumar",
+                    subject: [{
+                        sub_name: "Maths",
+                        marks: "90"
+                    },
+                        {
+                            sub_name: "Science",
+                            marks: "100"
+                        }]
+                }]
+        });
+    </script>
+</head>
+<body ng-app="includeApp" ng-controller="includeController">
+<div>
+    <div ng-include="'include1.html'"></div>
+    <div ng-include="'include2.html'"></div>
+</div>
+
+</body>
+</html>

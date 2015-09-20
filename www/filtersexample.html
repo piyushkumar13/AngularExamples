@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        angular.module("filterApp", [])
+                .controller("filterController", function ($scope) {
+
+                    $scope.students = [{
+                        firstName: "Piyush",
+                        lastName: "Kumar",
+                        subject: [{
+                            sub_name: "Maths",
+                            marks: "100"
+                        },
+                            {
+                                sub_name: "Science",
+                                marks: "90"
+                            }]
+                    },
+                        {
+                            firstName: "Sheel",
+                            lastName: "Kumar",
+                            subject: [{
+                                sub_name: "Maths",
+                                marks: "90"
+                            },
+                                {
+                                    sub_name: "Science",
+                                    marks: "100"
+                                }]
+                        }]
+
+                });
+    </script>
+</head>
+<body ng-app="filterApp">
+<div ng-controller="filterController">
+    <input type="text" ng-model="studentName">
+    <ul>
+        <li ng-repeat="student in students | filter: studentName">
+            Name : {{student.firstName+' '+student.lastName}}
+            <p ng-repeat="subject in student.subject">
+
+                Subject Name : {{subject.sub_name}} <br>
+                Marks : {{subject.marks}} <br>
+            </p>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        angular.module("builtInDirectivesApp", [])
+    </script>
+</head>
+<body ng-app="builtInDirectivesApp" ng-init="employees=[
+{'name':'piyush','company':'thermofisher scientific'},
+{'name':'vikas','company':'tcs'},
+{'name':'nilesh','company':'tcs'}]">
+
+<ul>
+    <li ng-repeat="employee in employees"> {{'name : '+ employee.name + ' , company : '+employee.company}}</li>
+</ul>
+
+<table>
+    <tr>
+        <td>
+            <input type="checkbox" ng-model="hideButton"/></td>
+        <td>
+            <button ng-hide="hideButton">click me!</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" ng-model="diabledButton"/></td>
+        <td>
+            <button ng-disabled="diabledButton">click me!</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" ng-model="showButton"/></td>
+        <td>
+            <button ng-show="showButton">click me!</button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+           {{clickButton}}
+        <td>
+            <button ng-click="clickButton = clickButton + 1">click me!</button>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

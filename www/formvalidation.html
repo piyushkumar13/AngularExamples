@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        var mainApp = angular.module("formValidationApp", []);
+        mainApp.controller("formValidationController", function ($scope) {
+
+//            $scope.firstName = "Piyush";
+//            $scope.lastName = "Kumar";
+//            $scope.emailAddress = "piyush@gmail.com";
+
+            $scope.reset = function () {
+                $scope.firstName = "";
+                $scope.lastName = "";
+                $scope.emailAddress = "";
+            }
+        });
+    </script>
+</head>
+<body>
+
+<div ng-app="formValidationApp" ng-controller="formValidationController">
+    <form name="studentForm" novalidate>
+        <table border="2">
+            <tr>
+                <td>Enter your name</td>
+                <td>
+                    <input name="studentName" type="text" ng-model="firstName" required/>
+                    <span style="color: red;"
+                          ng-show="studentForm.studentName.$dirty && studentForm.studentName.$invalid">
+                        <span ng-show="studentForm.studentName.$error.required">First name is required</span>
+
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter your last name</td>
+                <td>
+                    <input name="lastName" type="text" ng-model="lastName" required/>
+                    <span style="color: red;" ng-show="studentForm.lastName.$dirty && studentForm.lastName.$invalid">
+                        <span ng-show="studentForm.lastName.$error.required">Last name is required</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter your email address</td>
+                <td>
+                    <input name="emailAddress" type="email" ng-model="emailAddress" required/>
+                    <span style="color: red;"
+                          ng-show="studentForm.emailAddress.$dirty && studentForm.emailAddress.$invalid">
+                        <span ng-show="studentForm.emailAddress.$error.required">Email address is required</span>
+                        <span ng-show="studentForm.emailAddress.$error.email"> Email address is invalid</span>
+
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" ng-disabled="studentForm.studentName.$dirty && studentForm.studentName.$invalid ||
+                    studentForm.lastName.$dirty && studentForm.lastName.$invalid ||
+                    studentForm.emailAddress.$dirty && studentForm.emailAddress.$invalid"/>
+                </td>
+                <td>
+                    <button type="reset">Reset All!</button>
+                </td>
+            </tr>
+
+        </table>
+
+
+    </form>
+
+
+</div>
+
+</body>
+</html>

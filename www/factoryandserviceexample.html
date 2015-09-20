@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script>
+        var mainApp = angular.module("factoryAndServiceApp", []);
+        mainApp.factory("multiplyFactory", function () {
+            var fObj = {};
+            fObj.multiply = function (a, b) {
+                return a * b;
+            };
+            return fObj;
+        });
+
+        mainApp.service("multiplyService", function (multiplyFactory) {
+            this.square = function (a) {
+                return multiplyFactory.multiply(a, a);
+            }
+        });
+
+        mainApp.controller("serviceController", function ($scope, multiplyService) {
+            $scope.square1 = function () {
+                $scope.result = multiplyService.square($scope.value1);
+            }
+        });
+
+    </script>
+</head>
+<body ng-app="factoryAndServiceApp" ng-controller="serviceController">
+
+<div>
+    Area of rectangle is : <input type="text" ng-model="value1">
+
+    <button ng-click="square1()">square is</button>
+     <p>{{result}}</p>
+</div>
+
+</body>
+</html>

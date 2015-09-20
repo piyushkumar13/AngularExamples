@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="../node_modules/angular/angular.min.js"></script>
+
+</head>
+
+<body ng-app="myapp" >
+<div ng-controller="mycontroller">
+    <p>{{hello.title}}</p>
+</div>
+
+<script>
+    angular.module("myapp", [])
+            .controller("mycontroller", function ($scope) {
+
+                $scope.hello = {};
+                $scope.hello.title = "This is the angularjs example";
+
+            });
+</script>
+
+</body>
+</html>

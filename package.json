@@ -1,0 +1,17 @@
+{
+  "name": "angularexample",
+  "version": "1.0.0",
+  "description": "This is the practice project for angular",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Piyush Kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.4.6",
+    "angular-route": "^1.4.6",
+    "grunt": "^0.4.5",
+    "grunt-web-server": "^1.2.3"
+  }
+}

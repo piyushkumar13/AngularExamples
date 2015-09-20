@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/angular-route/angular-route.min.js"></script>
+    <script>
+        var mainApp = angular.module("routeApp", ['ngRoute']);
+
+        mainApp.config(function ($routeProvider) {
+            $routeProvider
+                    .when('/route1', {
+                        templateUrl: 'route1.html',
+                        controller: 'routeController1'
+                    })
+                    .when('/route2', {
+                        templateUrl: 'route2.html',
+                        controller: 'routeController2'
+                    })
+                    .otherwise({
+                        redirectTo: ''
+                    })
+        });
+        mainApp.controller("routeController1", ['$scope', function (a) {
+
+            a.message1 = "Hi! This is route1 page";
+
+        }]);
+
+        mainApp.controller("routeController2", ['$scope', function (b) {
+
+            b.message2 = "Hi! This is route2 page";
+
+        }]);
+
+    </script>
+
+</head>
+<body ng-app="routeApp">
+<div>
+    <a href="#/route1">go to route1</a><br>
+    <a href="#/route2">go to route2</a>
+
+    <div ng-view></div>
+</div>
+
+</body>
+</html>
